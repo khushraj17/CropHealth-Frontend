@@ -1,0 +1,307 @@
+.landing-technology {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--landing-surface);
+  overflow: hidden;
+}
+
+.technology-image {
+  position: relative;
+  min-height: 720px;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 0 22px 22px 0;
+  background: var(--landing-surface);
+}
+
+.technology-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--technology-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+  will-change: transform;
+  transition:
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.2s ease;
+}
+
+.technology-image-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(17, 18, 15, 0.08) 0%,
+    rgba(17, 18, 15, 0.2) 45%,
+    rgba(17, 18, 15, 0.58) 100%
+  );
+  opacity: 0.9;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .technology-image:hover::before {
+    transform: scale(1.12);
+    filter: brightness(1.08);
+  }
+
+  .technology-image:hover .technology-image-overlay {
+    opacity: 0.65;
+  }
+}
+
+.technology-image.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 900ms ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.technology-image.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.technology-content {
+  align-self: center;
+  padding: 100px clamp(32px, 6vw, 100px);
+}
+
+.technology-content h2 {
+  margin: 0 0 28px;
+  color: var(--landing-text);
+  font-size: clamp(38px, 4.5vw, 66px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.technology-content h2 span {
+  color: var(--landing-accent);
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.technology-content > p {
+  max-width: 480px;
+  margin: 0 0 18px;
+  color: var(--landing-muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.process-list {
+  margin-top: 38px;
+  border-top: 1px solid var(--landing-border);
+}
+
+.process-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  align-items: start;
+  gap: 16px;
+  padding: 22px 16px;
+  border-bottom: 1px solid var(--landing-border);
+  transition:
+    background 350ms ease,
+    padding-left 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-item > span {
+  padding-top: 3px;
+  color: var(--landing-accent);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  transition:
+    transform 350ms ease,
+    color 350ms ease;
+}
+
+.process-item h3 {
+  margin: 0 0 7px;
+  color: var(--landing-text);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  transition: color 300ms ease;
+}
+
+.process-item p {
+  margin: 0;
+  color: var(--landing-muted);
+  font-size: 13px;
+  line-height: 1.8;
+  transition: color 300ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .process-item:hover {
+    padding-left: 24px;
+    background: rgba(165, 164, 119, 0.045);
+  }
+
+  .process-item:hover > span {
+    transform: translateX(3px);
+    color: var(--landing-text);
+  }
+
+  .process-item:hover h3 {
+    color: var(--landing-accent);
+  }
+}
+
+.technology-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  padding: 16px 22px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--landing-accent);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--landing-text);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  transition:
+    color 450ms ease,
+    border-color 450ms ease,
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 450ms ease;
+}
+
+.technology-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--landing-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.technology-button svg {
+  flex-shrink: 0;
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .technology-button:hover {
+    border-color: var(--landing-accent);
+    color: #11120f;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(165, 164, 119, 0.12);
+  }
+
+  .technology-button:hover::before {
+    transform: scaleX(1);
+  }
+
+  .technology-button:hover svg {
+    transform: translate(3px, -3px);
+  }
+}
+
+.technology-button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.technology-button:focus-visible {
+  outline: 2px solid var(--landing-accent);
+  outline-offset: 5px;
+}
+
+@media (max-width: 900px) {
+  .landing-technology {
+    grid-template-columns: 1fr;
+  }
+
+  .technology-image {
+    min-height: 440px;
+    border-radius: 0;
+  }
+
+  .technology-content {
+    padding: 70px 7%;
+  }
+}
+
+@media (max-width: 600px) {
+  .technology-image {
+    min-height: 320px;
+  }
+
+  .technology-content {
+    padding: 55px 24px 65px;
+  }
+
+  .technology-content h2 {
+    font-size: 42px;
+    letter-spacing: -1.5px;
+  }
+
+  .process-list {
+    margin-top: 30px;
+  }
+
+  .process-item {
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+    padding: 20px 8px;
+  }
+
+  .process-item h3 {
+    font-size: 14px;
+  }
+
+  .process-item p {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .technology-image,
+  .technology-image::before,
+  .technology-image-overlay,
+  .process-item,
+  .process-item > span,
+  .process-item h3,
+  .process-item p,
+  .technology-button,
+  .technology-button::before,
+  .technology-button svg {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .technology-image::before {
+    transform: none !important;
+  }
+}
+
+
+.tech-lable {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding-bottom: 20px;
+  color: var(--landing-muted);
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}

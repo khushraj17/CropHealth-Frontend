@@ -1,0 +1,353 @@
+.landing-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: 760px;
+  min-height: 100svh;
+
+  padding: 150px 10% 110px;
+
+  border-radius: 0 0 28px 28px;
+}
+
+.hero-background {
+  position: absolute;
+  z-index: -3;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center 55%;
+  background-repeat: no-repeat;
+
+  transform: scale(1.04);
+  animation: cinematic-image 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.landing-hero::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+
+  content: "";
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(13, 15, 12, 0.88) 0%,
+      rgba(13, 15, 12, 0.57) 48%,
+      rgba(13, 15, 12, 0.2) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(13, 15, 12, 0.85) 0%,
+      transparent 35%,
+      rgba(13, 15, 12, 0.32) 100%
+    );
+}
+
+.hero-grain {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+
+  pointer-events: none;
+  opacity: 0.13;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
+}
+
+.hero-content {
+  width: min(760px, 100%);
+  animation: cinematic-text 900ms 150ms both;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: var(--landing-accent);
+
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.19em;
+  line-height: 1.8;
+}
+
+.eyebrow-line {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--landing-accent);
+}
+
+.hero-title {
+  margin: 28px 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(64px, 8.5vw, 124px);
+  font-weight: 400;
+  line-height: 0.91;
+  letter-spacing: -0.065em;
+
+  animation: cinematic-text 1000ms 300ms both;
+}
+
+.hero-title span {
+  color: var(--landing-accent);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-description {
+  max-width: 420px;
+  margin: 30px 0;
+
+  color: rgba(238, 236, 227, 0.79);
+
+  font-size: 14px;
+  line-height: 1.9;
+
+  animation: cinematic-text 900ms 450ms both;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+
+  margin-top: 34px;
+  animation: cinematic-text 900ms 600ms both;
+}
+
+.hero-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  min-height: 50px;
+  padding: 0 20px;
+
+  border-radius: 10px;
+  background: var(--landing-accent);
+  color: #15160f;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+
+  transition: background 200ms ease, transform 200ms ease;
+}
+
+.hero-primary-button:hover {
+  background: #c0c19a;
+  transform: translateY(-2px);
+}
+
+.hero-secondary-button {
+  padding: 12px 0;
+
+  border-bottom: 1px solid rgba(238, 236, 227, 0.45);
+
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.hero-index {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+
+  writing-mode: vertical-rl;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+
+.hero-index span {
+  color: var(--landing-accent);
+}
+
+.hero-bottom {
+  position: absolute;
+  right: 6%;
+  bottom: 30px;
+  left: 6%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 9px;
+  letter-spacing: 0.13em;
+
+  animation: cinematic-text 900ms 800ms both;
+}
+
+.scroll-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scroll-indicator svg {
+  animation: scroll-arrow 1.8s ease-in-out infinite;
+}
+
+@keyframes cinematic-image {
+  from {
+    transform: scale(1.12);
+    filter: brightness(0.65);
+  }
+
+  to {
+    transform: scale(1.04);
+    filter: brightness(1);
+  }
+}
+
+@keyframes cinematic-text {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes scroll-arrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@media (max-width: 900px) {
+  .landing-hero {
+    padding-right: 8%;
+    padding-left: 8%;
+  }
+
+  .hero-title {
+    font-size: clamp(60px, 10vw, 95px);
+  }
+}
+
+@media (max-width: 600px) {
+  .landing-hero {
+    min-height: 760px;
+    min-height: 100svh;
+
+    padding: 130px 7% 110px;
+    border-radius: 0 0 18px 18px;
+  }
+
+  .hero-background {
+    background-position: 58% center;
+  }
+
+  .landing-hero::before {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(13, 15, 12, 0.78),
+        rgba(13, 15, 12, 0.3)
+      ),
+      linear-gradient(
+        0deg,
+        rgba(13, 15, 12, 0.9),
+        transparent 65%
+      );
+  }
+
+  .hero-title {
+    margin: 25px 0;
+    font-size: clamp(58px, 13vw, 78px);
+  }
+
+  .hero-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-description {
+    max-width: 340px;
+    font-size: 13px;
+  }
+
+  .hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .hero-index,
+  .hero-bottom > span {
+    display: none;
+  }
+
+  .hero-bottom {
+    right: 7%;
+    left: 7%;
+    bottom: 22px;
+  }
+
+  .scroll-indicator {
+    margin-left: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-hero *,
+  .landing-hero *::before,
+  .landing-hero *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.hero-background {
+  animation: cinematic-image 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-eyebrow {
+  animation: cinematic-text 800ms 150ms both;
+}
+
+.hero-title {
+  animation: cinematic-text 1000ms 300ms both;
+}
+
+.hero-description {
+  animation: cinematic-text 900ms 450ms both;
+}
+
+.hero-actions {
+  animation: cinematic-text 900ms 600ms both;
+}
+
+.hero-bottom {
+  animation: cinematic-text 900ms 800ms both;
+}

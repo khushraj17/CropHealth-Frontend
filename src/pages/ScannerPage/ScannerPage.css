@@ -1,0 +1,58 @@
+/* .scanner-page {
+  --landing-bg: #11120f;
+  --landing-surface: #1b1c17;
+  --landing-text: #eeece3;
+  --landing-muted: #aaa99e;
+  --landing-accent: #a5a477;
+  --landing-border: rgba(238, 236, 227, 0.17);
+
+  min-height: 100vh;
+  padding: 0 clamp(22px, 6vw, 100px) 80px;
+  overflow: clip;
+  background:
+  radial-gradient(
+    ellipse at 50% 0%,
+    rgba(65, 100, 55, 0.24),
+    transparent 48%
+  ),
+  radial-gradient(
+    ellipse at 90% 55%,
+    rgba(112, 120, 65, 0.10),
+    transparent 40%
+  ),
+  #11120f;
+  color: var(--landing-text);
+} */
+
+.scanner-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: clip;
+  background: #11120f;
+  color: var(--landing-text);
+}
+
+.scanner-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      rgba(10, 15, 10, 0.48),
+      rgba(10, 15, 10, 0.72)
+    ),
+    url("../../assets/image/crop_bg.jpg") center / cover no-repeat;
+}
+
+.scanner-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 clamp(22px, 6vw, 100px) 80px;
+}
+
+.scanner-page * {
+  box-sizing: border-box;
+}
